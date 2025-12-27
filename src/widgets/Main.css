@@ -1,0 +1,6 @@
+.Main_container{
+    width: 100%;
+    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+}

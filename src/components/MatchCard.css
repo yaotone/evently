@@ -1,0 +1,129 @@
+.MatchCard{
+    width: 100%;
+    height: 120px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    padding: 8px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.Match_photo{
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 8px;
+    background-color: var(--text);
+}
+
+.Match_info{
+    width: 100%;
+    height: 100%;
+    margin-left: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Match_nickname{
+    max-width: 100%;
+    height: 36px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Match_place{
+    max-width: 100%;
+    height: fit-content;
+    max-height: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.MatchCard_open{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--background);
+    width: 100%;
+    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.MatchCard_close{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.MatchCard_close_icon{
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary);
+}
+
+.MatchCard_info{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.MatchCard_photos{
+    width: 100%;
+    height: 40%;
+    min-height: 40%;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.MatchCard_photos::-webkit-scrollbar{
+    display: none;
+}
+
+.MatchCard_photo{
+    min-width: 100%;
+    height: 100%;
+    background-color: var(--text);
+    outline: 1px solid var(--background);
+}
+
+.MatchCard_body{
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.MatchCard_same_events{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 4px;
+}
+
+.MatchCard_same_event{
+    width: fit-content;
+    height: fit-content;
+    padding: 2px 8px 2px 8px;
+    box-sizing: border-box;
+    background-color: var(--primary-25);
+    border-radius: 8px;
+}
+
+.MatchCard_desc{
+    margin-top: 16px;
+    width: 100%;
+    height: fit-content;
+}

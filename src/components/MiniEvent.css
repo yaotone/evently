@@ -1,0 +1,8 @@
+.MiniEvent {
+    width: fit-content;
+    height: fit-content;
+    padding: 2px 8px 2px 8px;
+    box-sizing: border-box;
+    background-color: var(--primary-25);
+    border-radius: 8px;
+}

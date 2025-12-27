@@ -1,0 +1,277 @@
+.Event {
+    width: 100%;
+    height: 120px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    padding: 8px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.Event_photo {
+    min-width: 100px;
+    min-height: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background-color: var(--text);
+}
+
+.Event_info {
+    width: 100%;
+    height: 100%;
+    margin-left: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Event_name {
+    max-width: 100%;
+    height: 36px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Event_time {
+    max-width: 100%;
+    height: fit-content;
+    max-height: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Event_open {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--background);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.Event_close {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Event_close_icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary);
+}
+
+.Event_photos {
+    width: 100%;
+    height: 40%;
+    min-height: 40%;
+    overflow-x: scroll;
+    display: flex;
+}
+
+.Event_open_photo {
+    min-width: 100%;
+    height: 100%;
+    outline: 1px solid var(--background);
+    background-color: var(--text);
+}
+
+.Event_photos::-webkit-scrollbar {
+    display: none;
+}
+
+.Event_body {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    overflow-y: scroll;
+}
+
+.Event_body_time {
+    width: 100%;
+    height: fit-content;
+    margin-top: 4px;
+}
+
+.Event_body_place_container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.Event_body_place_icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary);
+}
+
+.Event_body_desc {
+    margin-top: 16px;
+    width: 100%;
+    height: fit-content;
+}
+
+.Event_actions {
+    margin-top: auto;
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Event_attend {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--primary-25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Event_attend_icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--text);
+    transition: 0.3s;
+}
+
+.attendForm_background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-25);
+    z-index: 15;
+    display: flex;
+    align-items: center;
+}
+
+.attendForm {
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid var(--primary);
+    border-radius: 20px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.attendForm_head {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.attendForm_inputs {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.attendForm_date {
+    width: 48%;
+    height: 40px;
+    border: 0;
+    outline: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 4px;
+    box-sizing: border-box;
+    color: var(--text);
+    background-color: var(--background);
+    font-size: 24px;
+}
+
+.attendForm_submit {
+    width: 100%;
+    height: 40px;
+    outline: 1px solid var(--primary);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attendForm_dropdown_container {
+    width: 48%;
+    height: 40px;
+    border-radius: 8px;
+    outline: 1px solid var(--primary);
+    display: flex;
+    padding: 4px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.attendForm_dropdown_field {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attendForm_dropdown_text {
+    font-size: 24px;
+}
+
+.attendForm_dropdown_icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary);
+    transition: 0.3s;
+}
+
+.attendForm_dropdown {
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 4px;
+    outline: 1px solid var(--primary);
+    border-radius: 8px;
+    left: 0px;
+    top: 40px;
+    background-color: var(--background);
+    z-index: 16;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.attendForm_dropdown_open {
+    visibility: visible;
+    opacity: 1;
+    top: 44px;
+}
+
+.attendForm_dropdown_var {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
