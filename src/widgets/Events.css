@@ -102,6 +102,7 @@
     height: fit-content;
     display: flex;
     gap: 8px;
+    margin-top: 16px;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }

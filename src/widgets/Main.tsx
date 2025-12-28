@@ -10,12 +10,16 @@ interface IMain {
     activePage: number
 }
 
+const wnd: any = window;
+const tg = wnd.Telegram?.WebApp;
+console.log(tg)
+
 export default function Main({ activePage }: IMain) {
     if (activePage === 1)
         return (
             <>
                 <div className="Main_container">
-                    <Match />
+                    <Match tg={tg}/>
                 </div>
             </>
         )
@@ -39,7 +43,7 @@ export default function Main({ activePage }: IMain) {
         return (
             <>
                 <div className="Main_container">
-                    <Profile />
+                    <Profile/>
                 </div>
             </>
         )
@@ -47,7 +51,7 @@ export default function Main({ activePage }: IMain) {
         return (
             <>
                 <div className="Main_container">
-                    <Premium />
+                    <Premium tg={tg}/>
                 </div>
             </>
         )

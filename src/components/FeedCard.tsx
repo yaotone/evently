@@ -1,6 +1,8 @@
 import { useRef, useState } from "react"
 import like from "../assets/like.png"
 import "./FeedCard.css"
+import { useMutation } from "@tanstack/react-query"
+import axiosInstance from "../api/axios"
 
 export default function FeedCard() {
     const photoRef = useRef(null)
@@ -11,6 +13,7 @@ export default function FeedCard() {
     function onLikeClick(ev: any) {
         ev.stopPropagation()
         setIsLiked(liked=>!liked)
+        likeMutation.mutate("1");
     }
 
     function onScrollEnd() {
@@ -27,6 +30,13 @@ export default function FeedCard() {
             })
         }
     }
+
+    const likeMutation = useMutation({
+        mutationKey: ["like"],
+        mutationFn: (id: string) => {
+            return axiosInstance.post(`/feed/${id}`)
+        }
+    })
 
     return (
         <div className="FeedCard" >

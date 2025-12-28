@@ -4,8 +4,22 @@ import place from "../assets/place.png"
 import hand from "../assets/hand.png"
 import chevron from "../assets/chevron.png"
 import "./Event.css"
+import { useMutation, useQuery } from "@tanstack/react-query"
+import axiosInstance from "../api/axios"
 
-export default function Event() {
+interface IEvent {
+    title: string,
+    desc?: string,
+    placeName?: string,
+    addr?: string,
+    city: string,
+    startAt?: string,
+    photos: string[],
+    type: string,
+    id: string
+}
+
+export default function Event({ title, desc, placeName, addr, city, startAt, photos, type = "EVENT", id }: IEvent) {
     const photoRef = useRef(null)
     const [isOpen, setIsOpen] = useState(false);
     const [isAttending, setIsAttending] = useState(false)
@@ -39,6 +53,19 @@ export default function Event() {
         }
     }
 
+    function parseDayTime(dayTime: string) {
+        switch (dayTime) {
+            case "Утро":
+                return "MORNING"
+            case "День":
+                return "DAY"
+            case "Вечер":
+                return "EVENING"
+            case "Ночь":
+                return "NIGHT"
+        }
+    }
+
     function onAttendClick() {
         if (isAttending) setIsAttending(false)
         else {
@@ -47,6 +74,24 @@ export default function Event() {
         }
     }
 
+    function handleAttend() {
+        attendEventMutation.mutate({
+            "userId": "1",
+            "contextType": type,
+            "eventId": type == "PLACE" ? null : id,
+            "placeId": type == "PLACE" ? id : null,
+            "date": date,
+            "timeSlot": parseDayTime(dayTime),
+            "status": "GO"
+        })
+    }
+
+    const attendEventMutation = useMutation({
+        mutationKey: ["attendEvent"],
+        mutationFn: (att: any) => {
+            return axiosInstance.post("/intents", att)
+        }
+    })
 
     function handleDateChange(ev: any) {
         let value = ev.currentTarget.value;
@@ -55,27 +100,30 @@ export default function Event() {
     return (
         <>
             <div className="Event" onClick={() => setIsOpen(true)}>
-                <div className="Event_photo" />
+                <div style={{backgroundImage: `url(http://localhost:8080/api/media/download/${photos[0]})`}} className="Event_photo" />
                 <div className="Event_info">
-                    <h1 className="Event_name">Концерт “Какой то”</h1>
-                    <div className="Event_time">21.02.26 19:00</div>
+                    <h1 className="Event_name">{title}</h1>
+                    {startAt && <div className="Event_time">{`${placeName} ${startAt.slice(0, -4).replace("T", " ")}`}</div>}
                 </div>
             </div>
             {isOpen &&
                 <div className="Event_open">
                     <div className="Event_photos" ref={photoRef}
                         onScrollEnd={() => onScrollEnd()}>
-                        <div className="Event_open_photo"></div>
-                        <div className="Event_open_photo"></div>
+                        {photos.map((photo: any) => {
+                            return <div className="Event_open_photo" style={{backgroundImage: `url(http://localhost:8080/api/media/download/${photo})`}}/>
+                        })}
                     </div>
                     <div className="Event_body">
-                        <h1>Концерт “Какой то”</h1>
-                        <div className="Event_body_time">21.02.26 19:00</div>
+                        <h1>{title}</h1>
+                        {startAt && <div className="Event_body_time">{startAt.slice(0, -4).replace("T", " ")}</div>}
                         <div className="Event_body_place_container">
                             <div className="Event_body_place_icon" style={{ mask: `url(${place}) no-repeat center`, maskSize: `24px 24px` }} />
-                            <div className="Event_body_place">г.Москва, м.Юго-западное, ул.Пушкина, д.Колотушкина 21 </div>
+                            {(placeName != undefined && addr != undefined) ?
+                                <div className="Event_body_place">{`${placeName} ${city} ${addr}`}</div>
+                                : <div className="Event_body_place">{`${city}`}</div>}
                         </div>
-                        <div className="Event_body_desc">Описание события</div>
+                        {desc && <div className="Event_body_desc">{desc}</div>}
                     </div>
                     <div className="Event_actions">
                         <div className="Event_attend" onClick={() => onAttendClick()}>
@@ -95,20 +143,20 @@ export default function Event() {
                             <input type="date" className="attendForm_date" value={date}
                                 onChange={(ev) => handleDateChange(ev)} />
                             <div className="attendForm_dropdown_container">
-                                <div className="attendForm_dropdown_field" onClick={()=>setIsDropdownOpen(open=>!open)}>
+                                <div className="attendForm_dropdown_field" onClick={() => setIsDropdownOpen(open => !open)}>
                                     <div className="attendForm_dropdown_text">{dayTime}</div>
-                                    <div className="attendForm_dropdown_icon" style={!isDropdownOpen ? { mask: `url(${chevron}) no-repeat center`, maskSize: `24px 24px` } : 
-                                {mask: `url(${chevron}) no-repeat center`, maskSize: `24px 24px`, transform: `rotate(180deg)`}}/>
+                                    <div className="attendForm_dropdown_icon" style={!isDropdownOpen ? { mask: `url(${chevron}) no-repeat center`, maskSize: `24px 24px` } :
+                                        { mask: `url(${chevron}) no-repeat center`, maskSize: `24px 24px`, transform: `rotate(180deg)` }} />
                                 </div>
                                 <div className={isDropdownOpen ? "attendForm_dropdown attendForm_dropdown_open" : "attendForm_dropdown"}>
-                                    <div className="attendForm_dropdown_var" onClick={()=>setDayTime("Утро")}>Утро</div>
-                                    <div className="attendForm_dropdown_var" onClick={()=>setDayTime("День")}>День</div>
-                                    <div className="attendForm_dropdown_var" onClick={()=>setDayTime("Вечер")}>Вечер</div>
-                                    <div className="attendForm_dropdown_var" onClick={()=>setDayTime("Ночь")}>Ночь</div>
+                                    <div className="attendForm_dropdown_var" onClick={() => setDayTime("Утро")}>Утро</div>
+                                    <div className="attendForm_dropdown_var" onClick={() => setDayTime("День")}>День</div>
+                                    <div className="attendForm_dropdown_var" onClick={() => setDayTime("Вечер")}>Вечер</div>
+                                    <div className="attendForm_dropdown_var" onClick={() => setDayTime("Ночь")}>Ночь</div>
                                 </div>
                             </div>
                         </div>
-                        <div className="attendForm_submit"><h1>Отправить</h1></div>
+                        <div className="attendForm_submit" onClick={() => handleAttend()}><h1>Отправить</h1></div>
                     </div>
                 </div>
             }

@@ -1,4 +1,4 @@
-.MatchCard{
+.MatchCard {
     width: 100%;
     height: 120px;
     border-radius: 20px;
@@ -9,14 +9,16 @@
     align-items: center;
 }
 
-.Match_photo{
+.Match_photo {
     min-width: 100px;
     min-height: 100px;
     border-radius: 8px;
     background-color: var(--text);
+    background-position: center;
+    background-size: cover;
 }
 
-.Match_info{
+.Match_info {
     width: 100%;
     height: 100%;
     margin-left: 8px;
@@ -26,7 +28,7 @@
     justify-content: space-between;
 }
 
-.Match_nickname{
+.Match_nickname {
     max-width: 100%;
     height: 36px;
     overflow: hidden;
@@ -34,7 +36,7 @@
     text-overflow: ellipsis;
 }
 
-.Match_place{
+.Match_place {
     max-width: 100%;
     height: fit-content;
     max-height: fit-content;
@@ -43,7 +45,7 @@
     text-overflow: ellipsis;
 }
 
-.MatchCard_open{
+.MatchCard_open {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -56,7 +58,7 @@
     overflow: hidden;
 }
 
-.MatchCard_close{
+.MatchCard_close {
     width: 100%;
     height: 40px;
     display: flex;
@@ -64,20 +66,20 @@
     align-items: center;
 }
 
-.MatchCard_close_icon{
+.MatchCard_close_icon {
     width: 24px;
     height: 24px;
     background-color: var(--primary);
 }
 
-.MatchCard_info{
+.MatchCard_info {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.MatchCard_photos{
+.MatchCard_photos {
     width: 100%;
     height: 40%;
     min-height: 40%;
@@ -85,18 +87,20 @@
     overflow-x: scroll;
 }
 
-.MatchCard_photos::-webkit-scrollbar{
+.MatchCard_photos::-webkit-scrollbar {
     display: none;
 }
 
-.MatchCard_photo{
+.MatchCard_photo {
     min-width: 100%;
     height: 100%;
-    background-color: var(--text);
-    outline: 1px solid var(--background);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-.MatchCard_body{
+.MatchCard_body {
     width: 100%;
     height: 100%;
     padding: 8px;
@@ -104,7 +108,7 @@
     overflow-y: scroll;
 }
 
-.MatchCard_same_events{
+.MatchCard_same_events {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -113,7 +117,7 @@
     gap: 4px;
 }
 
-.MatchCard_same_event{
+.MatchCard_same_event {
     width: fit-content;
     height: fit-content;
     padding: 2px 8px 2px 8px;
@@ -122,7 +126,7 @@
     border-radius: 8px;
 }
 
-.MatchCard_desc{
+.MatchCard_desc {
     margin-top: 16px;
     width: 100%;
     height: fit-content;
