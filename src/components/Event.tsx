@@ -4,7 +4,7 @@ import place from "../assets/place.png"
 import hand from "../assets/hand.png"
 import chevron from "../assets/chevron.png"
 import "./Event.css"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query"
 import axiosInstance from "../api/axios"
 
 interface IEvent {
