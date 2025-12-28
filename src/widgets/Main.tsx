@@ -19,7 +19,7 @@ export default function Main({ activePage }: IMain) {
         return (
             <>
                 <div className="Main_container">
-                    <Match tg={tg}/>
+                    <Match />
                 </div>
             </>
         )
@@ -51,7 +51,7 @@ export default function Main({ activePage }: IMain) {
         return (
             <>
                 <div className="Main_container">
-                    <Premium tg={tg}/>
+                    <Premium />
                 </div>
             </>
         )

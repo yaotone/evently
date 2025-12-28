@@ -1,11 +1,7 @@
 import PremiumCard from "../components/PremiumCard"
 import "./Premium.css"
 
-interface IPremium{
-    tg: any;
-}
-
-export default function Premium({tg}:IPremium){
+export default function Premium(){
     return(
         <>
         <div className="Premium">

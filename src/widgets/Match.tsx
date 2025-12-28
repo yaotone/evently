@@ -3,11 +3,8 @@ import MatchCard from "../components/MatchCard"
 import "./Match.css"
 import axiosInstance from "../api/axios"
 
-interface IMatch{
-    tg: any;
-}
 
-export default function Match({tg}:IMatch){
+export default function Match(){
 
     const {data} = useQuery({
         queryKey: ["matches"],
